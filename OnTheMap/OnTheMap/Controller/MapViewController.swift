@@ -61,12 +61,11 @@ class MapViewController: UIViewController, MKMapViewDelegate{
             
             // Finally we place the annotation in an array of annotations.
             annotations.append(annotation)
-            let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-            mapView.setRegion(region, animated: true)
         }
         
         // When the array is complete, we add the annotations to the map.
-        self.mapView.addAnnotations(annotations)
+        mapView.removeAnnotations(mapView.annotations)
+        mapView.addAnnotations(annotations)
         
         
     }
@@ -100,11 +99,11 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     // to the URL specified in the annotationViews subtitle property.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
-            let app = UIApplication.shared
-            if let toOpen = view.annotation?.subtitle! {
-                app.open(URL(string: toOpen)!)
+            if let url = URL(string: (view.annotation?.subtitle!)!),
+                    UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
             }
-        }
     }
     
     

@@ -61,7 +61,6 @@ extension TableViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         if let url = URL(string: self.studentLocation[(indexPath as NSIndexPath).row].mediaURL),
             UIApplication.shared.canOpenURL(url) {
-            print("print\(url)")
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
         

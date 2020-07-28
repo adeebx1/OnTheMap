@@ -335,15 +335,20 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="AdW-EC-c86">
+                                <rect key="frame" x="197" y="544" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="HvQ-XV-8ua" firstAttribute="top" secondItem="Qrq-gf-Tnc" secondAttribute="bottom" constant="54" id="47A-ce-u2p"/>
                             <constraint firstItem="HvQ-XV-8ua" firstAttribute="leading" secondItem="j9o-iU-fku" secondAttribute="leading" constant="60" id="AGm-uw-wro"/>
                             <constraint firstItem="yWz-KX-WtK" firstAttribute="centerX" secondItem="6S2-Pg-8Lc" secondAttribute="centerX" id="Dhs-mG-eAm"/>
+                            <constraint firstItem="j9o-iU-fku" firstAttribute="bottom" secondItem="AdW-EC-c86" secondAttribute="bottom" constant="298" id="HS6-15-9X5"/>
                             <constraint firstItem="j9o-iU-fku" firstAttribute="trailing" secondItem="HvQ-XV-8ua" secondAttribute="trailing" constant="60" id="JSk-2Q-OxO"/>
                             <constraint firstItem="yWz-KX-WtK" firstAttribute="centerY" secondItem="6S2-Pg-8Lc" secondAttribute="centerY" id="VYH-Pd-EaD"/>
                             <constraint firstItem="Qrq-gf-Tnc" firstAttribute="leading" secondItem="j9o-iU-fku" secondAttribute="leading" id="WIm-O0-By0"/>
+                            <constraint firstItem="AdW-EC-c86" firstAttribute="centerX" secondItem="6S2-Pg-8Lc" secondAttribute="centerX" id="fPC-4w-xL6"/>
                             <constraint firstItem="HvQ-XV-8ua" firstAttribute="centerX" secondItem="6S2-Pg-8Lc" secondAttribute="centerX" id="gxk-cN-xzx"/>
                             <constraint firstItem="j9o-iU-fku" firstAttribute="trailing" secondItem="yWz-KX-WtK" secondAttribute="trailing" constant="60" id="hcb-20-Zcn"/>
                             <constraint firstItem="Qrq-gf-Tnc" firstAttribute="top" secondItem="j9o-iU-fku" secondAttribute="top" id="i2n-tV-3dO"/>
@@ -355,7 +360,9 @@
                     <navigationItem key="navigationItem" id="6Zp-K6-FOH"/>
                     <connections>
                         <outlet property="AddMediaURLTF" destination="gcM-Ob-h1u" id="bOM-Ss-mom"/>
+                        <outlet property="activityIndicator" destination="AdW-EC-c86" id="DwI-iT-FrP"/>
                         <outlet property="addLocationTF" destination="mx1-aI-pZ2" id="Sjx-4M-815"/>
+                        <outlet property="findLocation" destination="Ovq-Qe-jGN" id="Vcv-C5-hrP"/>
                         <segue destination="Dbm-Hg-huS" kind="show" identifier="submitLocation" id="U03-QZ-dXq"/>
                     </connections>
                 </viewController>

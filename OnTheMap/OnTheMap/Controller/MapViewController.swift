@@ -18,8 +18,14 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         OnTheMapClient.getStudentLocation() { studentLocationResults, error in
-            DispatchQueue.main.async {
-                self.updateMap(results: studentLocationResults)
+            if error == nil {
+                DispatchQueue.main.async {
+                    self.updateMap(results: studentLocationResults)
+                }
+                
+            }
+            else  {
+                self.showAlert(message: "Faild to downlaod data!", title: "Download data")
             }
             
         }
@@ -101,10 +107,10 @@ class MapViewController: UIViewController, MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if control == view.rightCalloutAccessoryView {
             if let url = URL(string: (view.annotation?.subtitle!)!),
-                    UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
+                UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
+        }
     }
     
     

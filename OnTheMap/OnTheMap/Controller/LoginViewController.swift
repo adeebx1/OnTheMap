@@ -26,11 +26,6 @@ class LoginViewController: UIViewController {
         
     }
     
-    override func viewWillDisappear(_ animated: Bool){
-        super.viewWillDisappear(animated)
-        
-        
-    }
     
     @IBAction func loginTapped(_ sender: Any) {
         OnTheMapClient.login(username: self.emailTextField.text ?? "" , password: self.passwordTextField.text ?? "" , completion: self.handleSessionResponse(success:error:))
@@ -50,7 +45,6 @@ class LoginViewController: UIViewController {
     }
     
     func handleSessionResponse(success: Bool, error:Error?){
-        print(success)
         if success{
             self.performSegue(withIdentifier: "completeLogin", sender: nil)
         }
@@ -61,11 +55,7 @@ class LoginViewController: UIViewController {
     }
     
     func setLoggingIn(_ loggingIn: Bool) {
-        if loggingIn {
-            activityIndicator.startAnimating()
-        } else {
-            activityIndicator.stopAnimating()
-        }
+      loggingIn ? activityIndicator.startAnimating() : activityIndicator.stopAnimating()
         emailTextField.isEnabled = !loggingIn
         passwordTextField.isEnabled = !loggingIn
         loginButton.isEnabled = !loggingIn
